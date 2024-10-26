@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { login } from './actions'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -27,12 +28,13 @@ export default function Component() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">E-mail</Label>
               <Input
                 id="email"
                 type="email"
+                name="email"
                 placeholder="seu@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -44,6 +46,7 @@ export default function Component() {
               <Input
                 id="password"
                 type="password"
+                name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -53,7 +56,7 @@ export default function Component() {
               <Checkbox id="remember" />
               <Label htmlFor="remember">Lembrar-me</Label>
             </div>
-            <Button type="submit" className="w-full">
+            <Button formAction={login} className="w-full">
               Entrar
             </Button>
           </form>
