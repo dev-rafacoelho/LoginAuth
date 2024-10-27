@@ -4,14 +4,13 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { AlertCircle, ArrowLeft } from "lucide-react"
+import{ useRouter} from "next/router"
+
+
 
 export default function Component() {
   const [isResettingPassword, setIsResettingPassword] = useState(false)
 
-  const handleTryAgain = () => {
-    // Aqui você redirecionaria o usuário de volta para a página de login
-    console.log("Redirecionando para a página de login...")
-  }
 
   const handleResetPassword = () => {
     setIsResettingPassword(true)
@@ -38,10 +37,10 @@ export default function Component() {
             Desculpe, o e-mail ou a senha que você inseriu está incorreto. Por favor, verifique suas credenciais e tente novamente.
           </p>
           <div className="space-y-4">
-            <Button onClick={handleTryAgain} variant="outline" className="w-full">
+            <a href="/"><Button variant="outline" className="w-full">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Voltar para o Login
-            </Button>
+            </Button></a>
             <Button
               onClick={handleResetPassword}
               disabled={isResettingPassword}
